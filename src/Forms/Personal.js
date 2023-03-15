@@ -2,11 +2,12 @@ import React from "react";
 import useSelectorCostom from "../Componets/useSelector";
 import { useDispatch } from "react-redux";
 import { setProsonalDetail } from "../Redux/Actions/ReduxActions";
+import { useNavigate } from "react-router";
 
 const Prosonal = () => {
   const { ProsnalDetail } = useSelectorCostom();
   const Dispatch = useDispatch();
-
+  const navigation = useNavigate();
   // ProsnalDetail: {
   //   Name: "Name Middel Last",
   //   Contact: 917709433561,
@@ -29,7 +30,7 @@ const Prosonal = () => {
       <form
         className="w-75 mt-5"
         onChange={(e) => setDetails(e)}
-        action="http://localhost:3000/EducationForm"
+        // action="http://localhost:3000/EducationForm"
       >
         <div class="form-group">
           <label for="name">Name:</label>
@@ -97,8 +98,12 @@ const Prosonal = () => {
             name={"Linkedin"}
           />
         </div>
-        <button type="submit" className="btn bg-primary mt-5  text-end">
-          Next
+        <button
+          type="button"
+          onClick={() => navigation("/EducationForm")}
+          className="btn bg-primary mt-5  text-end"
+        >
+          next
         </button>
       </form>
     </div>
